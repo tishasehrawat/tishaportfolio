@@ -1,15 +1,18 @@
-import {cp, mkdir, rm, stat} from 'node:fs/promises';
+import {cp, mkdir, rm, stat, writeFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import {join} from 'node:path';
+import {pages, renderPage} from './site.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const output = join(root, 'dist');
-await rm(output, {recursive:true, force:true});
-await mkdir(output, {recursive:true});
-await cp(join(root, 'index.html'), join(output, 'index.html'));
-await cp(join(root, 'src'), join(output, 'src'), {recursive:true});
-await cp(join(root, 'public'), output, {recursive:true});
-for (const asset of ['favicon.svg', 'images/social-preview.png', 'documents/tisha-sehrawat-resume.pdf', 'vendor/gsap.min.js', 'vendor/ScrollTrigger.min.js', 'vendor/SplitText.min.js', 'vendor/lenis.min.js', 'fonts/fraunces-var.woff2', 'fonts/geist-var.woff2']) {
+await rm(output, {recursive: true, force: true});
+await mkdir(join(output, 'src'), {recursive: true});
+for (const page of pages) {
+  await writeFile(join(output, (page.slug || 'index') + '.html'), await renderPage(page));
+}
+for (const file of ['styles.css', 'main.js']) await cp(join(root, 'src', file), join(output, 'src', file));
+await cp(join(root, 'public'), output, {recursive: true});
+for (const asset of ['favicon.svg', 'images/social-preview.png', 'images/hero-tedx.webp', 'documents/tisha-sehrawat-resume.pdf', 'fonts/montserrat-var.woff2']) {
   await stat(join(output, asset));
 }
-console.log('Built portfolio in dist/. Only curated public assets and application files are included.');
+console.log('Built ' + pages.length + ' pages in dist/. Only curated public assets and application files are included.');

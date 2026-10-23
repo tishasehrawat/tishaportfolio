@@ -1,6 +1,6 @@
-# Tisha Sehrawat — Curiosity, in service of care
+# Tisha Sehrawat — Portfolio
 
-A cinematic, editorial portfolio for an aspiring physician, student researcher, and builder. Dark "clinical" chapters alternate with warm bone-paper chapters; motion is built on GSAP, ScrollTrigger, SplitText, and Lenis smooth scrolling, all self-hosted.
+A clean, multi-page portfolio for an aspiring physician-scientist: soft neumorphic surfaces, a clinical-teal accent with a touch of coral, Montserrat headings, Poppins body text and a Playball script logo. No frameworks or animation libraries.
 
 ## Run locally
 
@@ -8,37 +8,32 @@ Requires Node.js 20 or newer. No dependency installation is needed.
 
     npm run dev
 
-Open the printed localhost URL (normally http://localhost:5173). The development server serves only application files and curated public assets; it never exposes `resources/`.
+Open the printed localhost URL (normally http://localhost:5173). The dev server renders pages on request and serves only application files and curated public assets; it never exposes `resources/`.
 
 ## Check and build
 
     npm run check     # syntax-checks every script
-    npm run build     # writes the production site to dist/
+    npm run build     # writes all pages to dist/
     npm run preview   # serves dist/ locally
 
-`vercel.json` defines the build command and output directory for Vercel. These commands do not deploy anything.
+`vercel.json` sets the build command, the `dist/` output and `cleanUrls`, so `/research` serves `research.html`. These commands do not deploy anything.
 
-## What's where
+## How the site is put together
 
-- `index.html` — page structure and copy: hero, recognition marquee, about, case files, journey, beyond the ward, recognition, contact.
-- `src/data.js` — the six case files and three further threads (copy, stats, stage notes, links). Edit project content here.
-- `src/main.js` — case-file rendering and their line-art "plates", the project drawer with `#project/<id>` deep links, header behaviour, mobile menu, and all motion choreography.
-- `src/artwork.js` — the hero's procedural cell (a breathing dot-sphere that reacts to the cursor) and the bedside-monitor ECG trace. Both share a 72 BPM clock.
-- `src/styles.css` — design tokens (`--ink`, `--bone`, `--mint`, `--coral`), dark/light chapter themes, layout, responsive and print rules.
-- `public/vendor/` — GSAP 3.15 (ScrollTrigger, SplitText) under GreenSock's standard no-charge licence, and Lenis 1.3 (MIT).
-- `public/fonts/` — Fraunces, Geist, and Geist Mono as variable WOFF2 files, under the SIL Open Font License (notices included).
-- `public/images/` — curated, optimised WebP photos and the 1200×630 social preview card.
+- `src/layout.html` — the shared page shell: meta tags, icon sprite, header and navigation, mobile menu, footer.
+- `src/pages/*.html` — one file per page: `home`, `about`, `education`, `research`, `clinical`, `projects`, `community`, `awards`, `contact`. Edit page content here.
+- `scripts/site.mjs` — the page list (slug, nav label, title, description) and the renderer that wraps each page in the layout. Add a page by adding an entry here and a file in `src/pages/`.
+- `scripts/art.mjs` — the teal line diagrams used where no photo exists. Insert one in a page with `{{art:helix}}`, `{{art:care}}`, `{{art:plastix}}`, `{{art:prion}}`, `{{art:triad}}`, `{{art:vision}}` or `{{art:dashboard}}`.
+- `src/styles.css` — design tokens (colours, shadows, fonts) and all layout and component styles.
+- `src/main.js` — small interactions: header shadow, mobile menu, fade-up reveal, back-to-top, awards filter, copy email, and redirects for old single-page links such as `/#project/care`.
+- `public/` — fonts (SIL Open Font License, notices included), optimised WebP photos (project images are named `project-*.webp`), documents, favicon and the 1200×630 social card.
 
-## Motion and accessibility
+## Accessibility
 
-- The intro preloader plays once per browser session; later visits go straight to the hero animation.
-- `prefers-reduced-motion` turns off the preloader, smooth scrolling, scroll choreography, and ambient loops; all content renders in its final state.
-- The pause button in the header stops the cell, ECG, marquee, and CSS loops, and is remembered for the session.
-- Case files pin into a horizontal rail on screens at least 1024 × 620 px and stack vertically elsewhere. Keyboard focus inside the rail scrolls the page to the focused card.
-- The canvases pause when off screen or when the tab is hidden.
+Semantic headings on every page, a skip link, visible focus styles, a keyboard-trapped mobile menu that closes with Escape, and `prefers-reduced-motion` support (content appears without the fade-up).
 
 ## Content notes
 
 `resources/` holds the original client materials and is ignored by Git. To publish a new asset, choose it deliberately, optimise it (for example `sips` → `cwebp`), and place it in `public/`. Never copy the whole folder into the site. Hospital photos were chosen so that no patients or screens are visible.
 
-Project illustrations are conceptual line art. Research results, prototype stages, and the published patent application are qualified in each case file's stage note. Contact links open an email client; there is no form backend.
+Diagrams are conceptual illustrations. Research results, prototype stages and the published patent application keep their stage notes; the 5hmC accuracy is described as a study-dataset result, not clinical validation. Contact links open an email client; there is no form backend.

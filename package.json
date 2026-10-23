@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Tisha Sehrawat — curiosity, in service of care.",
+  "description": "Tisha Sehrawat — aspiring physician, researcher and builder.",
   "scripts": {
     "dev": "node scripts/dev.mjs",
     "build": "node scripts/build.mjs",
     "preview": "node scripts/dev.mjs --dist",
-    "check": "node --check src/main.js && node --check src/artwork.js && node --check src/data.js && node --check scripts/build.mjs && node --check scripts/dev.mjs"
+    "check": "node --check src/main.js && node --check scripts/site.mjs && node --check scripts/art.mjs && node --check scripts/build.mjs && node --check scripts/dev.mjs"
   },
-  "engines": { "node": ">=20" }
+  "engines": {
+    "node": ">=20"
+  }
 }
