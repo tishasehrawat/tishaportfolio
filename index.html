@@ -1,28 +1,334 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tisha</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-    }
-
-    h1 {
-      font-size: 48px;
-      color: #333;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b1210" />
+  <meta name="description" content="Tisha Sehrawat — aspiring physician, student researcher, and builder in Bengaluru. Exploring the space where medicine, technology, and human care meet." />
+  <meta property="og:title" content="Tisha Sehrawat — Curiosity, in service of care" />
+  <meta property="og:description" content="Research, healthcare innovation, and a journey toward medicine. A portfolio by Tisha Sehrawat." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://tisha-portfolio-five.vercel.app/images/social-preview.png" />
+  <meta property="og:url" content="https://tisha-portfolio-five.vercel.app/" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>Tisha Sehrawat — Curiosity, in service of care</title>
+  <link rel="canonical" href="https://tisha-portfolio-five.vercel.app/" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" href="/fonts/fraunces-var.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/geist-var.woff2" as="font" type="font/woff2" crossorigin />
+  <script>
+    // Decide on motion before first paint so the intro never flashes unstyled content.
+    (function () {
+      var root = document.documentElement, quiet = false;
+      try { quiet = sessionStorage.getItem('tisha-motion-paused') === 'true'; } catch (error) {}
+      root.classList.add('js');
+      if (!quiet && !matchMedia('(prefers-reduced-motion: reduce)').matches) root.classList.add('motion');
+      setTimeout(function () { root.classList.add('is-loaded'); }, 5000);
+    })();
+  </script>
+  <link rel="stylesheet" href="/src/styles.css" />
+  <script defer src="/vendor/gsap.min.js"></script>
+  <script defer src="/vendor/ScrollTrigger.min.js"></script>
+  <script defer src="/vendor/SplitText.min.js"></script>
+  <script defer src="/vendor/lenis.min.js"></script>
+  <script type="module" src="/src/main.js"></script>
 </head>
 <body>
-  <h1>Hi, I am Tisha 👋</h1>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M8.5 7H17v8.5" /></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v16m-6-6 6 6 6-6" /></symbol>
+    <symbol id="i-cross" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18" /></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2" /><path d="M16 8V4H4v12h4" /></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7Z" /></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.1C4.5 6.6 7 5 9.2 5c1.4 0 2.3.7 2.8 1.6C12.5 5.7 13.4 5 14.8 5 17 5 19.5 6.6 19.5 9.9 19.5 15.4 12 20 12 20Z" /></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="preloader" aria-hidden="true">
+    <div class="preloader-row"><span>Tisha Sehrawat</span><span>Portfolio — 2026</span></div>
+    <svg class="preloader-ecg" viewBox="0 0 1200 160" preserveAspectRatio="none"><path d="M0 100h300l18-12 16 12h44l10 8 18-92 20 120 14-36h26l26-22 30 22h174l18-12 16 12h44l10 8 18-92 20 120 14-36h26l26-22 30 22h282" /></svg>
+    <div class="preloader-row preloader-foot"><span class="preloader-label">Checking vitals: curiosity, care</span><span class="preloader-count"><b>0</b>%</span></div>
+  </div>
+
+  <div class="cursor" aria-hidden="true"><span class="cursor-ring"><span class="cursor-label"></span></span><span class="cursor-dot"></span></div>
+
+  <header class="site-header" data-header>
+    <a class="wordmark" href="#home" aria-label="Tisha Sehrawat, home"><span class="wordmark-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-cross" /></svg></span><span>Tisha Sehrawat</span></a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="#about"><sup>01</sup>About</a><a href="#work"><sup>02</sup>Work</a><a href="#journey"><sup>03</sup>Journey</a><a href="#beyond"><sup>04</sup>Beyond</a><a href="#awards"><sup>05</sup>Recognition</a>
+    </nav>
+    <div class="header-meta"><span class="live-dot" aria-hidden="true"></span><span>Bengaluru <time class="local-time">--:--</time> IST</span></div>
+    <button class="motion-toggle" type="button" aria-pressed="false" aria-label="Pause animations"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 5v10M13 5v10" /></svg><span class="motion-tip">Pause motion</span></button>
+    <a class="pill-link magnetic" href="#contact"><span>Let’s talk</span><svg aria-hidden="true"><use href="#i-arrow" /></svg></a>
+    <span class="scroll-progress" aria-hidden="true"></span>
+    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+  </header>
+
+  <div class="menu" id="menu" hidden>
+    <nav class="menu-links" aria-label="Mobile navigation">
+      <a href="#about"><sup>01</sup><span>About</span></a>
+      <a href="#work"><sup>02</sup><span>Work</span></a>
+      <a href="#journey"><sup>03</sup><span>Journey</span></a>
+      <a href="#beyond"><sup>04</sup><span>Beyond</span></a>
+      <a href="#awards"><sup>05</sup><span>Recognition</span></a>
+      <a href="#contact"><sup>06</sup><span>Contact</span></a>
+    </nav>
+    <div class="menu-foot"><a href="mailto:tishasehrawat@gmail.com">tishasehrawat@gmail.com</a><span>Bengaluru, India</span></div>
+  </div>
+
+  <main id="main">
+    <section id="home" class="hero" data-theme="dark" aria-labelledby="hero-title">
+      <div class="hero-canvas-wrap" aria-hidden="true"><canvas class="hero-cell"></canvas></div>
+      <div class="hero-annotations" aria-hidden="true">
+        <span class="annotation a-fig">Fig. 01 — A living question</span>
+        <span class="annotation a-nucleus"><i></i>Nucleus<b>The question</b></span>
+        <span class="annotation a-membrane"><i></i>Membrane<b>The care around it</b></span>
+        <span class="hero-cross c1"><svg viewBox="0 0 24 24"><use href="#i-cross" /></svg></span>
+        <span class="hero-cross c2"><svg viewBox="0 0 24 24"><use href="#i-cross" /></svg></span>
+      </div>
+      <div class="hero-top shell">
+        <div class="hero-lede">
+          <p class="label hero-kicker" data-hero-fade><span class="live-dot"></span>Aspiring physician · Student researcher · Builder</p>
+          <p class="hero-tagline" data-hero-lines>Curiosity, <em>in service</em><br /> of care.</p>
+        </div>
+        <div class="hero-intro" data-hero-fade>
+          <p>I explore the space where <strong>medicine, technology, and human care</strong> meet — from early cancer signals to tools that make a hospital visit a little less frightening.</p>
+          <a class="button magnetic" href="#work" data-cursor="Explore"><span>See the work</span><span class="button-icon"><svg aria-hidden="true"><use href="#i-arrow" /></svg></span></a>
+        </div>
+      </div>
+      <h1 id="hero-title" class="hero-name shell"><span class="hero-name-line">Tisha</span> <span class="hero-name-line"><em>Sehrawat</em></span></h1>
+      <div class="hero-monitor shell" data-hero-fade>
+        <span class="monitor-bpm"><svg class="monitor-heart" aria-hidden="true"><use href="#i-heart" /></svg><b>72</b> BPM</span>
+        <canvas class="monitor-canvas" aria-hidden="true"></canvas>
+        <a class="scroll-cue" href="#about"><span>Scroll to begin</span><svg aria-hidden="true"><use href="#i-down" /></svg></a>
+      </div>
+    </section>
+
+    <div class="marquee" data-theme="dark" role="region" aria-label="Recognition highlights">
+      <div class="marquee-track">
+        <ul class="marquee-list">
+          <li><b>The New York Academy of Sciences</b> Wearables Challenge Winner</li>
+          <li><b>CREST Gold Award</b> British Science Association</li>
+          <li><b>Pulitzer Center</b> Global Health Finalist</li>
+          <li><b>TEDx10X Youth</b> Speaker</li>
+          <li><b>Oxford Journal of Student Scholarship</b> Published review</li>
+          <li><b>International Biology Bowl</b> Bronze</li>
+          <li><b>Diamond Challenge</b> Semi-Finalist</li>
+        </ul>
+      </div>
+    </div>
+
+    <section id="about" class="about section" data-theme="light" aria-labelledby="about-title">
+      <div class="shell">
+        <div class="section-head">
+          <span class="label">01 — History of present curiosity</span><span class="head-line"></span><span class="label">More than a résumé</span>
+        </div>
+        <h2 id="about-title" class="visually-hidden">About Tisha</h2>
+        <p class="manifesto" data-scrub-words>I’m Tisha, an IB student in Bengaluru on the path to medicine. I’m fascinated by what happens beneath the surface — the signals a cell leaves behind, the way a brain remembers, and the fear a patient carries into a hospital. So I ask questions. I research. I build. And I keep coming back to one idea: <em>science should mean something to someone.</em></p>
+        <div class="about-grid">
+          <figure class="portrait" data-clip-reveal>
+            <div class="portrait-media"><img src="/images/tisha-portrait.webp" alt="Tisha Sehrawat in a cream blazer at the TEDx10X Youth stage" width="1200" height="1600" loading="lazy" data-parallax-img /></div>
+            <figcaption class="label">TEDx10X Youth, 2026</figcaption>
+          </figure>
+          <div class="about-side">
+            <dl class="chart" data-stagger>
+              <div><dt>Name</dt><dd>Tisha Sehrawat</dd></div>
+              <div><dt>School</dt><dd>10X International School, Bengaluru</dd></div>
+              <div><dt>Programme</dt><dd>IB Diploma, Class of 2027</dd></div>
+              <div><dt>Higher level</dt><dd>Biology · Chemistry · Mathematics AA</dd></div>
+              <div><dt>Exploring</dt><dd>Neuroscience · Oncology · Computational biology · Human-centred care</dd></div>
+              <div><dt>Status</dt><dd><span class="live-dot"></span>Open to research &amp; good conversations</dd></div>
+            </dl>
+            <a class="text-link" href="/documents/tisha-sehrawat-resume.pdf" target="_blank" rel="noopener noreferrer" data-cursor="Read"><span>Read the full résumé</span><svg aria-hidden="true"><use href="#i-arrow" /></svg></a>
+          </div>
+        </div>
+        <ul class="vitals" aria-label="A few numbers behind the work">
+          <li><strong><span data-count="1000">1,000</span>+</strong><span>Patient records analysed in cancer research</span></li>
+          <li><strong><span data-count="132">132</span>+</strong><span>Stakeholders consulted for VisionXcelerate</span></li>
+          <li><strong><span data-count="70">70</span>+</strong><span>Girls mentored through Shiksham</span></li>
+          <li><strong><span data-count="50">50</span>+</strong><span>Studies synthesised on prion disease</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="work" class="work section" data-theme="dark" aria-labelledby="work-title">
+      <div class="work-pin">
+        <div class="shell work-intro">
+          <div class="section-head"><span class="label">02 — Case files</span><span class="head-line"></span><span class="label"><span class="work-progress-count">01</span> / 06</span></div>
+          <div class="work-heading">
+            <h2 id="work-title" data-split>Small questions.<br /><em>Meaningful</em> possibilities.</h2>
+            <p>A few things I’ve researched, built, and cared enough about to keep working on. Open any case file for the full story.</p>
+          </div>
+        </div>
+        <div class="work-viewport">
+          <div class="work-track" id="projects-grid"></div>
+        </div>
+        <div class="shell work-progress" aria-hidden="true"><span class="work-progress-bar"><i></i></span></div>
+      </div>
+    </section>
+
+    <section id="journey" class="journey section" data-theme="light" aria-labelledby="journey-title">
+      <div class="shell">
+        <div class="section-head"><span class="label">03 — Rounds</span><span class="head-line"></span><span class="label">From the classroom to the clinic</span></div>
+        <div class="journey-heading">
+          <h2 id="journey-title" data-split>The best lessons<br />have a <em>heartbeat.</em></h2>
+          <p>Research teaches me to look closer. Clinical experience reminds me why.</p>
+        </div>
+        <div class="journey-grid">
+          <div class="journey-photos">
+            <figure class="journey-photo jp-main" data-clip-reveal><img src="/images/tisha-scrubs.webp" alt="Tisha in scrubs outside the ICU block at Narayana Health" width="1125" height="1500" loading="lazy" data-parallax-img /><figcaption class="label">Narayana Health, Bengaluru</figcaption></figure>
+            <figure class="journey-photo jp-inset" data-clip-reveal><img src="/images/cardiac-wall.webp" alt="A hospital corridor mural tracing cardiac care, from aortic dissection to rehabilitation" width="1800" height="1350" loading="lazy" /></figure>
+          </div>
+          <div class="timeline">
+            <svg class="timeline-ecg" aria-hidden="true"><path d="" /></svg>
+            <article class="timeline-item" data-reveal>
+              <span class="timeline-node" aria-hidden="true"></span>
+              <span class="label timeline-year">2025 — 26 · Clinical exposure</span>
+              <h3>Learning beside the bedside.</h3>
+              <p class="timeline-org">Fortis Hospital &amp; Narayana Health</p>
+              <p>Shadowing across neurology, cardiology, and oncology — observing consultations, care teams, and the human side of clinical decisions. These experiences planted the seed for Project CARE.</p>
+              <ul class="tags"><li>Patient care</li><li>Clinical observation</li><li>Neurology · Cardiology · Oncology</li></ul>
+            </article>
+            <article class="timeline-item" data-reveal>
+              <span class="timeline-node" aria-hidden="true"></span>
+              <span class="label timeline-year">2024 — 26 · Research &amp; enrichment</span>
+              <h3>Following the questions further.</h3>
+              <p class="timeline-org">CFRCE · Non-Trivial · ICREST Academy</p>
+              <p>From computational oncology research to hands-on molecular biology and an interdisciplinary global health proposal — building the tools to turn a good question into a rigorous investigation.</p>
+              <details class="programmes">
+                <summary><span>Explore the programmes</span><svg aria-hidden="true"><use href="#i-cross" /></svg></summary>
+                <ul>
+                  <li><b>CFRCE / FARII</b><span>Advanced research in 5hmC cancer classification.</span></li>
+                  <li><b>Non-Trivial Research Foundations</b><span>Research design, causal inference, and Project TRIAD.</span></li>
+                  <li><b>ICREST ALP 101 &amp; 201</b><span>Molecular biology, PCR, bioinformatics, and laboratory techniques.</span></li>
+                  <li><b>Future Doctors I, Harvard Student Agencies</b><span>A pre-medical introduction to genetics, immunology, and clinical reasoning.</span></li>
+                  <li><b>Columbia University Irving Medical Center, SEM</b><span>Academic enrichment in oncology and biomedical innovation.</span></li>
+                </ul>
+              </details>
+            </article>
+            <article class="timeline-item" data-reveal>
+              <span class="timeline-node" aria-hidden="true"></span>
+              <span class="label timeline-year">Class of ’27 · The foundation</span>
+              <h3>Three sciences. Endless questions.</h3>
+              <p class="timeline-org">10X International School, Bengaluru</p>
+              <p>IB Diploma Programme with Biology, Chemistry, and Mathematics AA at Higher Level, alongside Physics, English, and Hindi at Standard Level.</p>
+              <div class="scores">
+                <div><strong><span data-count="42">42</span><small>/45</small></strong><span class="label">Predicted IB score</span></div>
+                <div><strong><span data-count="1500">1500</span><small>/1600</small></strong><span class="label">SAT superscore</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="beyond" class="beyond section" data-theme="dark" aria-labelledby="beyond-title">
+      <div class="shell">
+        <div class="section-head"><span class="label">04 — Beyond the ward</span><span class="head-line"></span><span class="label">Science is a human story</span></div>
+        <div class="beyond-heading">
+          <h2 id="beyond-title" data-split>Care doesn’t stop<br /><em>at the lab door.</em></h2>
+          <p>Sharing ideas, opening doors, and making a little room for others.</p>
+        </div>
+      </div>
+      <a class="talk" href="https://www.facebook.com/School10x/videos/healthcare-begins-long-before-diagnosis-it-begins-with-how-a-patient-feels-when-/1328251499458900/" target="_blank" rel="noopener noreferrer" data-cursor="Play" aria-label="Watch Tisha’s TEDx talk, Fear Is the First Symptom (opens in a new tab)">
+        <div class="talk-media" data-expand><img src="/images/tedx-wide.webp" alt="" width="2000" height="1333" loading="lazy" /><span class="talk-shade"></span></div>
+        <div class="talk-copy shell">
+          <span class="label">On stage — TEDx10X Youth</span>
+          <p class="talk-quote">“Fear is the <em>first symptom.”</em></p>
+          <p class="talk-desc">On the anxiety that comes before a diagnosis, and why empathetic healthcare starts with how a patient feels.</p>
+          <span class="talk-play"><svg aria-hidden="true"><use href="#i-play" /></svg>Watch the talk</span>
+        </div>
+      </a>
+      <div class="shell community">
+        <article class="community-card" data-reveal>
+          <span class="label">Shiksham — Co-founder</span>
+          <h3>Potential is everywhere. <em>Opportunity should be, too.</em></h3>
+          <p>An initiative bringing STEM mentorship, science, and holistic learning to girls in underserved communities — with a curriculum I helped design.</p>
+          <div class="community-stat"><strong><span data-count="70">70</span>+</strong><span>girls mentored</span></div>
+          <a class="text-link" href="mailto:tishasehrawat@gmail.com?subject=Shiksham%20partnership"><span>Build opportunities with us</span><svg aria-hidden="true"><use href="#i-arrow" /></svg></a>
+        </article>
+        <article class="community-card" data-reveal>
+          <span class="label">The Significant Figures — Co-president</span>
+          <h3>Making room for the next <em>“why?”</em></h3>
+          <p>Leading our school’s science club, and founding <i>The Science Trail</i> — the school’s first student-led science magazine. Science gets better when more people can be part of it.</p>
+        </article>
+        <article class="community-card" data-reveal>
+          <span class="label">10Xpress — Editor</span>
+          <h3>Translating science <em>for everyone.</em></h3>
+          <p>Editing the Science, Medicine &amp; Health section of the school newspaper — refining articles so complex discoveries read clearly and accurately.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="awards" class="awards section" data-theme="light" aria-labelledby="awards-title">
+      <div class="shell">
+        <div class="section-head"><span class="label">05 — Recognition</span><span class="head-line"></span><span class="label">A little encouragement along the way</span></div>
+        <div class="awards-heading">
+          <h2 id="awards-title" data-split>Grateful for<br /><em>the recognition.</em></h2>
+          <p>Each one is a reminder to keep asking, keep learning, and keep going.</p>
+        </div>
+        <ol class="award-list">
+          <li><a class="award-row" href="https://www.nyas.org/ideas-insights/blog/using-artificial-intelligence-and-augmented-reality-to-assist-dementia-patients/" target="_blank" rel="noopener noreferrer" data-cursor="Read"><span class="award-year">2024</span><span class="award-title">Wearables Challenge Winner</span><span class="award-org">The New York Academy of Sciences · VisionXcelerate</span><svg class="award-icon" aria-hidden="true"><use href="#i-arrow" /></svg></a></li>
+          <li><a class="award-row" href="/images/crest-gold.webp" target="_blank" rel="noopener noreferrer" data-cursor="View"><span class="award-year">2026</span><span class="award-title">CREST Gold Award</span><span class="award-org">British Science Association · PlastiXcan</span><svg class="award-icon" aria-hidden="true"><use href="#i-arrow" /></svg></a></li>
+          <li><div class="award-row"><span class="award-year">2026</span><span class="award-title">Global Health Finalist</span><span class="award-org">Pulitzer Center · Local Letters for Global Change · from ~15,000 entries</span></div></li>
+          <li><div class="award-row"><span class="award-year">2026</span><span class="award-title">International Biology Bowl · Bronze</span><span class="award-org">International Biology Bowl</span></div></li>
+          <li><div class="award-row"><span class="award-year">2026</span><span class="award-title">Diamond Challenge Semi-Finalist</span><span class="award-org">University of Delaware · VisionXcelerate</span></div></li>
+          <li><div class="award-row"><span class="award-year">2026</span><span class="award-title">International Chemistry Competition Finalist</span><span class="award-org">Advanced through qualification and semi-final rounds</span></div></li>
+          <li><div class="award-row"><span class="award-year">2024</span><span class="award-title">Life Entrepreneurship Changemaker Award</span><span class="award-org">10X International School · ChoiceX</span></div></li>
+          <li><div class="award-row"><span class="award-year">2024</span><span class="award-title">InnovateXHarrow Business Pitch · Runner-up</span><span class="award-org">Harrow International School · BioBeats</span></div></li>
+          <li><div class="award-row"><span class="award-year">2023</span><span class="award-title">National Astronomy Challenge · Gold</span><span class="award-org">School champion · National rank 32</span></div></li>
+          <li><div class="award-row"><span class="award-year">2023</span><span class="award-title">Stonehill Science Bowl · Runner-up</span><span class="award-org">Modern Problems Require Modern Solutions</span></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="human section" data-theme="light" aria-labelledby="human-title">
+      <div class="shell">
+        <span class="label human-eyebrow">Outside the footnotes</span>
+        <h2 id="human-title" class="human-text" data-scrub-words>Also a guitarist and songwriter, a state-level swimmer, the designer of a Greek-mythology board game, and someone who <em>never runs out of questions.</em></h2>
+        <p class="human-foot label"><svg aria-hidden="true"><use href="#i-heart" /></svg>Always a work in progress</p>
+      </div>
+    </section>
+
+    <footer id="contact" class="contact" data-theme="dark">
+      <div class="shell">
+        <div class="section-head"><span class="label">06 — Consult</span><span class="head-line"></span><span class="label"><span class="live-dot"></span>Open to ideas, collaboration &amp; good conversations</span></div>
+        <h2 class="contact-title" data-split>Let’s make<br />something <em>matter.</em></h2>
+        <div class="contact-grid">
+          <a class="contact-orb magnetic" href="mailto:tishasehrawat@gmail.com" data-cursor="Write"><span>Write to me</span><svg aria-hidden="true"><use href="#i-arrow" /></svg></a>
+          <div class="contact-details">
+            <p>Research. Healthcare. Education.<br />Or just an interesting question.</p>
+            <div class="email-row">
+              <a class="email-link" href="mailto:tishasehrawat@gmail.com">tishasehrawat@gmail.com</a>
+              <button class="copy-email" type="button" aria-label="Copy email address"><svg aria-hidden="true"><use href="#i-copy" /></svg><span>Copy</span></button>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span class="label">© <span id="copyright-year">2026</span> Tisha Sehrawat</span>
+          <ul class="social-links">
+            <li><a href="https://www.linkedin.com/in/tisha-sehrawat-a1969528b/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/tishasehrawat" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="https://scholar.google.com/citations?user=Sy0wAXIAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a></li>
+            <li><a href="/documents/tisha-sehrawat-resume.pdf" target="_blank" rel="noopener noreferrer">Résumé</a></li>
+          </ul>
+          <a class="back-to-top label" href="#home">Back to top<svg aria-hidden="true"><use href="#i-arrow" /></svg></a>
+        </div>
+        <p class="footer-mega" aria-hidden="true">Curiosity <em>&amp;</em> care</p>
+      </div>
+    </footer>
+  </main>
+
+  <dialog id="project-dialog" aria-labelledby="dialog-title">
+    <button class="dialog-close" type="button" aria-label="Close project details" autofocus><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6" /></svg></button>
+    <div class="dialog-panel" data-lenis-prevent>
+      <div id="dialog-content"></div>
+    </div>
+  </dialog>
+  <div class="toast" role="status" aria-live="polite"></div>
+  <noscript><div class="noscript-note">Explore Tisha’s work in the <a href="/documents/tisha-sehrawat-resume.pdf">full résumé</a>. Enable JavaScript for interactive project details and animations.</div></noscript>
 </body>
 </html>

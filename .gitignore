@@ -1,0 +1,23 @@
+# Original client materials (résumés, certificates, photos, notes) stay local.
+# Publish only curated, optimised assets through public/.
+resources/
+
+# Local tooling and agent skills
+.agents/
+.claude/
+
+# Dependencies, builds, and deploy state
+node_modules/
+dist/
+.vercel/
+playwright-report/
+test-results/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Operating system files
+.DS_Store
+**/.DS_Store
