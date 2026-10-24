@@ -12,7 +12,7 @@ for (const page of pages) {
 }
 for (const file of ['styles.css', 'main.js']) await cp(join(root, 'src', file), join(output, 'src', file));
 await cp(join(root, 'public'), output, {recursive: true});
-for (const asset of ['favicon.svg', 'images/social-preview.png', 'images/hero-tedx.webp', 'documents/tisha-sehrawat-resume.pdf', 'fonts/montserrat-var.woff2']) {
+for (const asset of ['favicon.svg', 'images/social-preview.png', 'images/hero-tedx.webp', 'fonts/montserrat-var.woff2']) {
   await stat(join(output, asset));
 }
 console.log('Built ' + pages.length + ' pages in dist/. Only curated public assets and application files are included.');
