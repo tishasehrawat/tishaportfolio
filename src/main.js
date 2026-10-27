@@ -14,14 +14,12 @@ const legacy = {
 };
 if (location.pathname === '/' && legacy[location.hash.slice(1)]) location.replace(legacy[location.hash.slice(1)]);
 
-// Compact header, reading progress and back-to-top button.
+// Compact header and back-to-top button.
 const header = $('.site-header');
 const toTop = $('.to-top');
 let frame = 0;
 function onScroll() {
-  const max = document.documentElement.scrollHeight - window.innerHeight;
   header.classList.toggle('is-scrolled', window.scrollY > 8);
-  header.style.setProperty('--progress', max > 0 ? String(Math.min(window.scrollY / max, 1)) : '0');
   toTop.hidden = window.scrollY < 600;
   frame = 0;
 }
@@ -32,8 +30,7 @@ toTop.addEventListener('click', () => {
   $('.logo').focus({preventScroll: true});
 });
 
-// Nav capsule: glides to the hovered or focused link, settles back on the current page,
-// and carries over from wherever it was on the previous page.
+// Nav capsule: sits on the current page and glides over from the previous page's link.
 const nav = $('.main-nav');
 const navLinks = $$('.nav-link', nav);
 const current = navLinks.find(link => link.classList.contains('active'));
@@ -42,14 +39,11 @@ pill.className = 'nav-pill';
 pill.setAttribute('aria-hidden', 'true');
 nav.prepend(pill);
 nav.classList.add('has-pill');
-let pillAt = null;
 function movePill(link, instant = false) {
   if (link && !link.offsetWidth) return;
   const appearing = !pill.classList.contains('is-visible');
   pill.classList.toggle('is-instant', instant || appearing);
   pill.classList.toggle('is-visible', Boolean(link));
-  pill.classList.toggle('is-away', Boolean(link) && link !== current);
-  pillAt = link;
   if (!link) return;
   for (const [name, value] of [['--x', link.offsetLeft], ['--y', link.offsetTop], ['--w', link.offsetWidth], ['--h', link.offsetHeight]]) {
     pill.style.setProperty(name, value + 'px');
@@ -59,19 +53,10 @@ function movePill(link, instant = false) {
     pill.classList.remove('is-instant');
   }
 }
-navLinks.forEach(link => {
-  link.addEventListener('pointerenter', () => movePill(link));
-  link.addEventListener('focus', () => movePill(link));
-  link.addEventListener('pointerdown', () => pill.classList.add('is-pressed'));
-});
-nav.addEventListener('pointerleave', () => movePill(current));
-nav.addEventListener('focusout', event => {if (!nav.contains(event.relatedTarget)) movePill(current);});
-document.addEventListener('pointerup', () => pill.classList.remove('is-pressed'));
-new ResizeObserver(() => movePill(pillAt || current, true)).observe(nav);
+new ResizeObserver(() => movePill(current, true)).observe(nav);
 addEventListener('pagehide', () => {
-  try {sessionStorage.setItem('nav-pill', String(navLinks.indexOf(pillAt)));} catch {}
+  try {sessionStorage.setItem('nav-pill', String(navLinks.indexOf(current)));} catch {}
 });
-addEventListener('pageshow', event => {if (event.persisted) movePill(current, true);});
 document.fonts.ready.then(() => {
   let from = -1;
   try {from = Number(sessionStorage.getItem('nav-pill') ?? -1);} catch {}
